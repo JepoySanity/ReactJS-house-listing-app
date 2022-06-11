@@ -1,3 +1,6 @@
+## Read more here:
+https://firebase.google.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
