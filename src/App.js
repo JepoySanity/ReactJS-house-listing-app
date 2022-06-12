@@ -5,6 +5,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import Navbar from "./components/Navbar";
 import Explore from "./pages/Explore";
 import Offers from "./pages/Offers";
+import Category from "./pages/Category";
 import Profile from "./pages/Profile";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/profile" element={<PrivateRoutes />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
