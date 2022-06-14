@@ -94,7 +94,6 @@ function CreateListing() {
     } else {
       geolocation.lat = formData.latitude;
       geolocation.lng = formData.longitude;
-      location = formData.address;
     }
 
     //store multiple images to firebase
@@ -147,11 +146,12 @@ function CreateListing() {
       timestamp: serverTimestamp(),
     };
 
+    formDataCopy.location = address;
     delete formDataCopy.images;
     delete formDataCopy.address;
-    location && (formDataCopy.location = location);
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
+    //save listing to firestore
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
     setLoading(false);
     toast.success("Listing Saved");
