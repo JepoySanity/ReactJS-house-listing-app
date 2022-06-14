@@ -4,5 +4,6 @@
 https://firebase.google.com/
 
 ## Important note:
-in order to use the geocoding api, you must register to google cloud platforms and get an API key,
-my api key wont work on you machine because it is only whitelisted to my own geocoding api
+in order to use the geocoding API, you must register to google cloud platforms and get an API key,
+my API key wont work on your machine because it is only whitelisted to my own geocoding API.
+if you dont wanna use the geocoding functionality 
