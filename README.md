@@ -4,6 +4,6 @@
 https://firebase.google.com/
 
 ## Important note:
-in order to use the geocoding API, you must register to google cloud platforms and get an API key,
+in order to use the geocoding API, you must register to google cloud platforms and get an API key for geocoding,
 my API key wont work on your machine because it is only whitelisted to my own geocoding API.
-if you dont wanna use the geocoding functionality 
+if you dont wanna use the geocoding functionality go to src/pages/CreateListing.jsx then set the defaulet state to `false`
