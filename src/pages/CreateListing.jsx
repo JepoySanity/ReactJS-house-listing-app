@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 function CreateListing() {
-  const [geolocationEnabled, setGeolocationEnabled] = useState(true);
+  const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
@@ -18,7 +19,7 @@ function CreateListing() {
     discountedPrice: 0,
     images: {},
     latitude: 0,
-    longiture: 0,
+    longitude: 0,
   });
 
   const auth = getAuth();
@@ -46,10 +47,49 @@ function CreateListing() {
     return <Spinner />;
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setLoading(true);
+
+    if (formData.discountedPrice >= formData.regularPrice) {
+      setLoading(false);
+      toast.error("Discounted price needs to be less than the regular price");
+      return;
+    }
+
+    if (formData.images.length > 6) {
+      setLoading(false);
+      toast.error("Maximum of 6 images");
+    }
+
+    let geolocation = {};
+    let location;
+    if (geolocationEnabled) {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${formData.address}&key=AIzaSyDlcGl-KKmdS0fF5MOMgiEuesVZc1WXCNI`
+      );
+      const data = await response.json();
+      geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
+      geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
+
+      location =
+        data.status === "ZERO_RESULTS"
+          ? undefined
+          : data.results[0]?.formatted_address;
+
+      if (location === undefined || location.includes("undefined")) {
+        setLoading(false);
+        toast.error("Please enter a valid address");
+        return;
+      }
+    } else {
+      geolocation.lat = formData.latitude;
+      geolocation.lng = formData.longitude;
+      location = formData.address;
+    }
+    setLoading(false);
   };
+
   const onMutate = (e) => {
     e.preventDefault();
     let bool = null;
@@ -226,8 +266,6 @@ function CreateListing() {
                   onChange={onMutate}
                   required
                 />
-              </div>
-              <div>
                 <label className="formLabel">Longitude</label>
                 <input
                   className="formInputSmall"
