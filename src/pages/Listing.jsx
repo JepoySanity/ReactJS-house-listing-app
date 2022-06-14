@@ -28,7 +28,24 @@ function Listing() {
     };
     fetchListing();
   }, [navigate, params.listingId]);
-  return <div>Listing</div>;
+
+  return (
+    <main>
+      <div
+        className="shareIconDiv"
+        onClick={() => {
+          navigator.clipboard.writeText(window.location.href);
+          setShareLinkCopied(true);
+          setTimeout(() => {
+            setShareLinkCopied(false);
+          }, 2000);
+        }}
+      >
+        <img src={shareIcon} alt="share icon" />
+      </div>
+      {shareLinkCopied && <p className="linkCopied">Link Copied</p>}
+    </main>
+  );
 }
 
 export default Listing;
