@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 function CreateListing() {
-  const [geolocationEnabled, setGeolocationEnabled] = useState(false);
+  const [geolocationEnabled, setGeolocationEnabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
@@ -66,7 +66,7 @@ function CreateListing() {
     let location;
     if (geolocationEnabled) {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${formData.address}&key=AIzaSyDlcGl-KKmdS0fF5MOMgiEuesVZc1WXCNI`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${formData.address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
       );
       const data = await response.json();
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
