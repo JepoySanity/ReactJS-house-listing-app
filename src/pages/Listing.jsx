@@ -48,6 +48,52 @@ function Listing() {
         <img src={shareIcon} alt="share icon" />
       </div>
       {shareLinkCopied && <p className="linkCopied">Link Copied</p>}
+      <div className="listingDetails">
+        <p className="listingName">
+          {listing.name} - &#8369;
+          {listing.offer
+            ? listing.discountedPrice
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            : listing.regularPrice
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </p>
+        <p className="listingLocation">{listing.location}</p>
+        <p className="listingType">
+          For {listing.type === "rent" ? "Rent" : "Sale"}
+        </p>
+        {listing.offer && (
+          <p className="discountPrice">
+            ${listing.regularPrice - listing.discountedPrice} discount
+          </p>
+        )}
+        <ul className="listingDetailsList">
+          <li>
+            {listing.bedrooms > 1
+              ? `${listing.bedrooms} Bedrooms`
+              : "1 Bedroom"}
+          </li>
+          <li>
+            {listing.bathrooms > 1
+              ? `${listing.bathrooms} Bathrooms`
+              : "1 Bathroom"}
+          </li>
+          <li>{listing.parking && "Parking Spot"}</li>
+          <li>{listing.furnished && "Furnished"}</li>
+        </ul>
+        <p className="listingLocationTitle">Location</p>
+        {/* todo map here */}
+
+        {auth.currentUser?.uid !== listing.userRef && (
+          <Link
+            to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`}
+            className="primaryButton"
+          >
+            Contact Landlord
+          </Link>
+        )}
+      </div>
     </main>
   );
 }
