@@ -29,6 +29,10 @@ function Listing() {
     fetchListing();
   }, [navigate, params.listingId]);
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <main>
       <div
