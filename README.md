@@ -1,38 +1,9 @@
+## A mobile-first House Listing app using reactJS and firebase 9 with geocoding api 🏠 🔥
+
 ## Read more here:
 https://firebase.google.com/
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Important note:
+in order to use the geocoding API, you must register to google cloud platforms and get an API key for geocoding (has a free tier with 2500 free api calls per day but needs to submit a valid credit card for verification),
+my API key wont work on your machine because it is only whitelisted to my own geocoding API, you also need to create an .env file on the root directory and paste your given API key i.e `REACT_APP_GEOCODE_API_KEY="AxzxSxxKxQL9xxxECd0E9tI_Cxhemxxxxxxxxxxxxx"`
+if you dont wanna use the geocoding functionality go to src/pages/CreateListing.jsx then set the default state to `false`
