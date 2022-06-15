@@ -53,6 +53,15 @@ function Contact() {
                 onChange={onChange}
               ></textarea>
             </div>
+            <a
+              href={`mailto:${landLord.email}?Subject=${searchParams.get(
+                "listingName"
+              )}&body=${message}`}
+            >
+              <button type="button" className="primaryButton">
+                Send Message
+              </button>
+            </a>
           </form>
         </main>
       )}
