@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../firebase.config";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import "swiper/css/autoplay";
 import Spinner from "./Spinner";
 
 function Slider() {
@@ -44,7 +45,12 @@ function Slider() {
       <>
         <p className="exploreHeading">Recommended</p>
 
-        <Swiper slidesPerView={1} pagination={{ clickable: true }}>
+        <Swiper
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          autoplay={true}
+        >
           {listings.map(({ data, id }) => (
             <SwiperSlide
               key={id}
