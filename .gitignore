@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /_locks
+/_logs
 /_cacache
 /.pnp
 .pnp.js
