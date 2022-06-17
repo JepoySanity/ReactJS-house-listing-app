@@ -1,5 +1,8 @@
 ## A mobile-first House Listing app using reactJS and firebase 9 with geocoding api 🏠 🔥
 
+## Live Demo:
+[https://firebase.google.com/](https://whimsical-banoffee-ee9d7f.netlify.app/)
+
 ## Read more here:
 https://firebase.google.com/
 
