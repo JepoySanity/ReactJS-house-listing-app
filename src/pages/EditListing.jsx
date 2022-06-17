@@ -441,7 +441,7 @@ function EditListing() {
 
           <label className="formLabel">Images</label>
           <p className="imagesInfo">
-            The first image will be the cover (max 6).
+            The first image will be the cover (max 6) *maximum of 2mb per image.
           </p>
           <input
             className="formInputFile"
