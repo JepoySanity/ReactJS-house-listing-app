@@ -29,7 +29,7 @@ function Category() {
           listingsRef,
           where("type", "==", params.categoryName),
           orderBy("timestamp", "desc"),
-          limit(2)
+          limit(5)
         );
         //exec query
         const querySnap = await getDocs(q);
@@ -62,7 +62,7 @@ function Category() {
         where("type", "==", params.categoryName),
         orderBy("timestamp", "desc"),
         startAfter(lastFetchedListing),
-        limit(10)
+        limit(5)
       );
       //exec query
       const querySnap = await getDocs(q);
