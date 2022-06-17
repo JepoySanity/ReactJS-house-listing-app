@@ -20,7 +20,7 @@ function ListingItem({ listing, id, onDelete, onEdit }) {
           <p className="categoryListingName">{listing.name}</p>
 
           <p className="categoryListingPrice">
-            $
+            &#8369;
             {listing.offer
               ? listing.discountedPrice
                   .toString()
